@@ -1,6 +1,6 @@
 # Second sample code from Tutorials Point: https://www.tutorialspoint.com/cryptography_with_python/cryptography_with_python_caesar_cipher.htm
 
-message = 'GIEWIVrGMTLIVrHIQS' #encrypted message
+message = 'Hello' #encrypted message
 LETTERS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
 for key in range(len(LETTERS)):
@@ -14,5 +14,4 @@ for key in range(len(LETTERS)):
          translated = translated + LETTERS[num]
       else:
          translated = translated + symbol
-
 print('Hacking key #%s: %s' % (key, translated))
