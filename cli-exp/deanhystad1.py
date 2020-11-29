@@ -1,4 +1,5 @@
 # Sourced from here: https://python-forum.io/Thread-Learning-Python-with-a-Caesar-cipher?pid=131456#pid131456
+# This is the raw original copy verbatim from deanhystad
 
 import string
    
@@ -20,4 +21,3 @@ message = input('Message to encrypt: ')
 encrypted = encrypt(message, shift=8, replace=' ')
 decrypted = encrypt(encrypted, shift=-8, replace=' ')
 print(encrypted)
-print(decrypted)
