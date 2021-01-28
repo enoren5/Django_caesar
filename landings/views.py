@@ -3,16 +3,38 @@ import string
 
 def caesar(request):
     # Courtesy of Real Python: https://realpython.com/python-practice-problems/
-    plain_text = request.GET['original_entry']
-    shift_num = request.GET['shift_num']
-    shift_num = int(shift_num)
-    letters = string.ascii_lowercase
-    mask = letters[shift_num:] + letters[:shift_num]
-    trantab = str.maketrans(letters, mask)
-    output_text = plain_text.translate(trantab)
-    context = {'output_text': output_text, 'original_entry': plain_text,}
-    return render(request, 'landings/home.html', context)
-
+    if 'encrypt' in request.GET:
+        plain_text = request.GET['original_entry']
+        shift_num = request.GET['shift_num']
+        shift_num = int(shift_num)
+        letters = string.ascii_lowercase
+        mask = letters[shift_num:] + letters[:shift_num]
+        trantab = str.maketrans(letters, mask)
+        output_text = plain_text.translate(trantab)
+        context = {'select_option': False, 'output_text': output_text, 'original_entry': plain_text,}
+        return render(request, 'landings/home.html', context)
+    
+    elif 'decrypt' in request.GET:
+        plain_text = request.GET['original_entry']
+        shift_num = request.GET['shift_num']
+        shift_num = -int(shift_num)
+        letters = string.ascii_lowercase
+        mask = letters[shift_num:] + letters[:shift_num]
+        trantab = str.maketrans(letters, mask)
+        output_text = plain_text.translate(trantab)
+        context = {'select_option': False, 'output_text': output_text, 'original_entry': plain_text,}
+        return render(request, 'landings/home.html', context)
+    
+    elif 'conversion' in request.GET:
+        conversion = request.GET['conversion']
+        if conversion == 'encrypt':
+            context = {'select_option': False, 'result_encrypt': True, 'result_decrypt': False}
+            return render(request, 'landings/home.html', context)
+        elif conversion == 'decrypt':
+            context = {'select_option': False, 'result_encrypt': False, 'result_decrypt': True}
+            return render(request, 'landings/home.html', context)
+    
+    return render(request, 'landings/home.html')
 
 # print(caesar("abcdefghijklmnopqrstuvwxyz", 3))
 # Create your views here.
