@@ -3,6 +3,26 @@
 {% block content %}    
 
     <br>
-<center><h1>Hello, World!</h1></center>
+<center>
+    
+    <h1>Hello, World!</h1>
 
+<form action="{% url 'caesar' %}" >
+    Enter the text you wish to scramble here:
+    <br>
+    <input type="text" name="original_entry" />
+    <br />
+    Enter your key:
+    <br>
+    <input type="number" name="shift_num" />
+    <br />
+    <input type="submit" value="Encrypt!" />
+  </form>
+
+  <h3>Original:</h3>
+  {{ original_entry }}
+  
+  <h3>Encrypted:</h3>
+  {{ output_text }}
+</center>
 {% endblock %}
