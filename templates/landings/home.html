@@ -3,7 +3,7 @@
 {% block content %}    
 
     <br>
-<center>
+    <center>
     
     <h1>Hello, World!</h1>
     {% if select_option %}
@@ -25,7 +25,7 @@
     </form>
     {% elif conv_decrypt %}
     <form action="{% url 'caesar' %}" >
-        Enter the text you wish to scramble here:
+        Enter the text you wish to unscramble here:
         <br>
         <input type="text" name="original_entry" />
         <br />
@@ -37,7 +37,7 @@
       </form>
     {% elif result_encrypt %}
     
-    <h3>Here is your message encrypteed:</h3>
+    <h3>Here is your message encrypted:</h3>
 
     <div class="field"> {{ output_text }} </div>
 
@@ -45,7 +45,7 @@
     <a href="{% url 'caesar' %}"><div class="field"> <strong> Again? Click here! </strong> </div> </a>
 
   {% elif result_decrypt %}
-    <h3>Here is your distance converted to miles:</h3>
+    <h3>Here is your message decrypted:</h3>
     
     <div class="field"> {{ output_text }} </div>
    
@@ -54,22 +54,6 @@
 
   {% endif %}
 
-<form action="{% url 'caesar' %}" >
-    Enter the text you wish to scramble here:
-    <br>
-    <input type="text" name="original_entry" />
-    <br />
-    Enter your key:
-    <br>
-    <input type="number" name="shift_num" />
-    <br />
-    <input type="submit" value="Encrypt!" />
-  </form>
 
-  <h3>Original:</h3>
-  {{ original_entry }}
-  
-  <h3>Encrypted:</h3>
-  {{ output_text }}
 </center>
 {% endblock %}
